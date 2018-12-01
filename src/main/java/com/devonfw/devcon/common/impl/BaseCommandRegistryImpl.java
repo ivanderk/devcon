@@ -15,14 +15,19 @@
  ******************************************************************************/
 package com.devonfw.devcon.common.impl;
 
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
 import com.devonfw.devcon.common.api.Command;
 import com.devonfw.devcon.common.api.CommandModuleInfo;
 import com.devonfw.devcon.common.api.CommandRegistry;
+import com.devonfw.devcon.common.api.data.CommandInfoLite;
+import com.devonfw.devcon.common.api.data.ModuleInfoLite;
 import com.google.common.base.Optional;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author ivanderk
@@ -86,6 +91,36 @@ public class BaseCommandRegistryImpl implements CommandRegistry {
 
     BaseCommandRegistryImpl other = (BaseCommandRegistryImpl) otherRegistry;
     getModules().putAll(other.getModules());
+  }
+
+  @Override
+  public void writeAsJSON(OutputStream out) {
+    ObjectMapper objectMapper = new ObjectMapper();
+    try {
+
+      Collection<ModuleInfoLite> modules = new ArrayList<ModuleInfoLite>();
+      for(CommandModuleInfo info: this.modules.values()){
+          Collection<CommandInfoLite> commands = new ArrayList<CommandInfoLite>();
+          for(Command cmd : info.getCommands()){
+            commands.add(new CommandInfoLite(cmd.getName(), 
+                                             cmd.getDescription(), 
+                                             cmd.getHelpText(), 
+                                             cmd.getDefinedParameters(),
+                                             cmd.getSortValue()));
+             
+          }
+          modules.add(new ModuleInfoLite(info.getName(), 
+                                         info.getDescription(), 
+                                         info.getSortValue(),
+                                         commands));
+      }
+    
+      objectMapper.writeValue(out, modules);
+
+    } catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
   }
 
 }

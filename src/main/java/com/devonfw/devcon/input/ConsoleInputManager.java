@@ -112,6 +112,14 @@ public class ConsoleInputManager {
 
       }
 
+      if (cmd.hasOption("j")){
+
+          this.registry.writeAsJSON(System.out);
+          System.exit(0);
+      } 
+    
+      this.output.showMessage(Devcon.DEVCON_BANNER);
+    
       if (cmd.hasOption("v")) {
         this.output.showMessage(Devcon.DEVCON_VERSION);
         System.exit(0);

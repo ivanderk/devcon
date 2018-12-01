@@ -28,5 +28,10 @@
     "opt":"s",
     "longOpt":"stacktrace",
     "description":"show (if relevant) stack-trace when errors occur"
+   },
+   {
+    "opt":"j",
+    "longOpt":"json",
+    "description":"show CommandRegistry as json object"
    }
 ]

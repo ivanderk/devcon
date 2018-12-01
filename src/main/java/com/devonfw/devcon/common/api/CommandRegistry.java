@@ -15,6 +15,7 @@
  ******************************************************************************/
 package com.devonfw.devcon.common.api;
 
+import java.io.OutputStream;
 import java.util.List;
 
 import com.google.common.base.Optional;
@@ -25,6 +26,8 @@ import com.google.common.base.Optional;
  * @author ivanderk
  */
 public interface CommandRegistry {
+
+  public void writeAsJSON(OutputStream out);
 
   List<CommandModuleInfo> getCommandModules();
 

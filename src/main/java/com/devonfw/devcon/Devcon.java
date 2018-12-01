@@ -67,12 +67,14 @@ public class Devcon {
   /**
    * to be used as version of devon.json files
    */
-  public static final String DEVON_DEFAULT_VERSION = "3.0.0";
+  public static final String DEVON_DEFAULT_VERSION = "3.0.1";
 
   /**
    * devcon's starter message
    */
-  public static final String DEVCON_BANNER = "Hello, this is Devcon!\n" + "Copyright (c) 2016 Capgemini";
+  public static final String DEVCON_BANNER = "Hello, this is Devcon!\n" + 
+                                             "Copyright (c) 2016, 2019 Capgemini\n" +
+                                             "Licensed under the Apache License, Version 2.0\n";
 
   /**
    * Determine whether app is inside an "executable jar" or not (made with Eclipse: has an "resource" folder"
@@ -95,8 +97,6 @@ public class Devcon {
    * @param args command line arguments
    */
   public static void main(String[] args) {
-
-    System.out.println(DEVCON_BANNER);
 
     Input input = new ConsoleInput(System.in, System.out);
     Output output = new ConsoleOutput(System.out);
