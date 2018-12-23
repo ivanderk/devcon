@@ -17,7 +17,7 @@ package com.devonfw.devcon.common.impl;
 
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -98,9 +98,9 @@ public class BaseCommandRegistryImpl implements CommandRegistry {
     ObjectMapper objectMapper = new ObjectMapper();
     try {
 
-      Collection<ModuleInfoLite> modules = new ArrayList<ModuleInfoLite>();
+      List<ModuleInfoLite> modules = new ArrayList<ModuleInfoLite>();
       for(CommandModuleInfo info: this.modules.values()){
-          Collection<CommandInfoLite> commands = new ArrayList<CommandInfoLite>();
+          List<CommandInfoLite> commands = new ArrayList<CommandInfoLite>();
           for(Command cmd : info.getCommands()){
             commands.add(new CommandInfoLite(cmd.getName(), 
                                              cmd.getDescription(), 
@@ -109,12 +109,15 @@ public class BaseCommandRegistryImpl implements CommandRegistry {
                                              cmd.getSortValue()));
              
           }
+
+          Collections.sort(commands, (c1, c2) -> c1.compareTo(c2));
           modules.add(new ModuleInfoLite(info.getName(), 
                                          info.getDescription(), 
                                          info.getSortValue(),
                                          commands));
       }
     
+      Collections.sort(modules, (m1, m2) -> m1.compareTo(m2));
       objectMapper.writeValue(out, modules);
 
     } catch (Exception e) {

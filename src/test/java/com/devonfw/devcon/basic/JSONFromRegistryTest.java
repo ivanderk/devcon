@@ -17,9 +17,7 @@ package com.devonfw.devcon.basic;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 import com.devonfw.devcon.common.api.CommandRegistry;
@@ -61,8 +59,10 @@ public class JSONFromRegistryTest {
     registry.writeAsJSON(out);
       
     String s = out.toString("UTF-8");
-    String persist = "[{\"name\":\"help\",\"description\":\"This module shows help info about devcon\",\"sortValue\":-1,\"commands\":[{\"name\":\"overview\",\"description\":\"This command provides a quick overview the basic usage of devcon\"";
+    System.out.println(s);
 
+    String persist = "[{\"name\":\"devon4j\",\"description\":\"devon4j (Java server project) related commands\",\"sortValue\":3,\"commands\":[{\"name\":\"build\",\"description\":\"This command will build the server project\"";
+    
     assertEquals(persist, s.substring(0, persist.length()));
    
   }

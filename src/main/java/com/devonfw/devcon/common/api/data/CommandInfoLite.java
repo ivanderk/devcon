@@ -17,7 +17,7 @@ package com.devonfw.devcon.common.api.data;
 
 import java.util.Collection;
 
-public class CommandInfoLite implements Info {
+public class CommandInfoLite implements Info , Comparable<CommandInfoLite> {
 
     private String name;
     private String description;
@@ -59,5 +59,9 @@ public class CommandInfoLite implements Info {
     public int getSortValue() {
         return sortValue;
     }
+
+	public int compareTo(CommandInfoLite c2) {
+		return this.name.compareTo(c2.getName());
+	}
 
 }

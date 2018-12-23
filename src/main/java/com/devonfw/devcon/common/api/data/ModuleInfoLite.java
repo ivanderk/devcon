@@ -17,7 +17,7 @@ package com.devonfw.devcon.common.api.data;
 
 import java.util.Collection;
 
-public class ModuleInfoLite implements Info {
+public class ModuleInfoLite implements Info, Comparable<ModuleInfoLite> {
 
     private String name;
     private String description;
@@ -52,4 +52,9 @@ public class ModuleInfoLite implements Info {
     public Collection<CommandInfoLite> getCommands() {
         return commands;
     }
+
+	public int compareTo(ModuleInfoLite m2) {
+		return this.name.compareTo(m2.getName());
+	}
+
 }
