@@ -59,7 +59,7 @@ public class JSONFromRegistryTest {
     registry.writeAsJSON(out);
       
     String s = out.toString("UTF-8");
-    System.out.println(s);
+    //System.out.println(s);
 
     String persist = "[{\"name\":\"devon4j\",\"description\":\"devon4j (Java server project) related commands\",\"sortValue\":3,\"commands\":[{\"name\":\"build\",\"description\":\"This command will build the server project\"";
     
