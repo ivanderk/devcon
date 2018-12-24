@@ -32,6 +32,6 @@
    {
     "opt":"j",
     "longOpt":"json",
-    "description":"show CommandRegistry as json object"
+    "description":"show CommandRegistry as json object (usefull for automation)"
    }
 ]

@@ -17,3 +17,6 @@ hs_err_pid*
 /resources/
 
 .vscode/
+
+#build artifact über jar
+dependency-reduced-pom.xml
