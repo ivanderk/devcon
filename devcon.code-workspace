@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "java"
+		},
+		{
+			"path": "node"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}
